@@ -4,6 +4,11 @@ terraform {
       source = "hashicorp/aws"
     }
   }
+  backend "s3" {
+    bucket = "adb12ed7-06c9-ab82-bde3-65a5cde11520-backend"
+    key    = "terraform/webapp/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
 }
 
 provider "aws" {
@@ -70,3 +75,4 @@ resource "aws_s3_bucket_object" "app" {
 output "Endpoint" {
   value = aws_s3_bucket.app.website_endpoint
 }
+
